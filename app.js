@@ -3,7 +3,7 @@ let resetbutton=document.querySelector(".res-button");
 let valueIsO="true";
 
 boxes.forEach((box)=>{
-    box.addEventListener("click",()=>{
+    box.addEventListener("click", ()=>{
 
         //if the previous box was O or the valIsO is ture
         if(valueIsO==="true"){
@@ -22,5 +22,7 @@ boxes.forEach((box)=>{
             //updating the valIs0 to true
             valueIsO="true";
         }
+        //after clicking a box the button is disabled
+        box.disabled = true;
     });
 });
