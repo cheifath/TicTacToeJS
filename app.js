@@ -2,6 +2,7 @@ let boxes=document.querySelectorAll(".box");
 let resetbutton=document.querySelector(".res-button");
 let valueIsO="true";
 
+//box manipulation
 boxes.forEach((box)=>{
     box.addEventListener("click", ()=>{
 
@@ -24,5 +25,18 @@ boxes.forEach((box)=>{
         }
         //after clicking a box the button is disabled
         box.disabled = true;
+    });
+});
+
+//reset button
+resetbutton.addEventListener("click",()=>{
+    boxes.forEach((box)=>{
+        
+        //setting all the values to null
+        box.textContent="";
+        //enabling the disabled button
+        box.disabled = false;
+        //setting valueIsO to true to start the game always from player X
+        valueIsO="true";
     });
 });
