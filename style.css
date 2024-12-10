@@ -17,6 +17,12 @@ body {
     font-size: 30px;
 }
 
+#endgame {
+    text-align: center;
+    font-size: 70px;
+    height: 1000px;
+}
+
 /** hero-section **/
 main {
     display: flex;

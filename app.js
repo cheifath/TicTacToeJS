@@ -1,5 +1,6 @@
 let boxes=document.querySelectorAll(".box");
 let resetbutton=document.querySelector(".res-button");
+let endgame=document.querySelector("#endgame");
 let valueIsO="true";
 //positon of winners
 const winPatterns=[
@@ -36,8 +37,26 @@ boxes.forEach((box)=>{
         }
         //after clicking a box the button is disabled
         box.disabled = true;
+
+        checkWinner();
     });
 });
+
+const checkWinner=()=>{
+    for(pattern of winPatterns){
+        console.log(pattern[0],pattern[1],pattern[2]);
+        let pos0val=boxes[pattern[0]].textContent;
+        let pos1val=boxes[pattern[1]].textContent;
+        let pos2val=boxes[pattern[2]].textContent;
+        if(pos0val!="" && pos1val!="" && pos2val!=""){
+            if(pos0val===pos1val && pos1val===pos2val){
+                console.log(" Winner : ",pos0val);
+                gameStopper();
+            }
+        }
+    }
+}
+
 
 //reset button
 resetbutton.addEventListener("click",()=>{
@@ -51,3 +70,9 @@ resetbutton.addEventListener("click",()=>{
         valueIsO="true";
     });
 });
+
+let gameStopper=()=>{
+    boxes.forEach((box)=>{
+        box.disabled = true;
+    });
+}
