@@ -1,6 +1,9 @@
 let boxes=document.querySelectorAll(".box");
 let resetbutton=document.querySelector(".res-button");
-let endgame=document.querySelector("#endgame");
+let endgame=document.querySelector(".endgame");
+let showtext=document.querySelector("#show-text")
+let newbutton=document.querySelector("#new-button");
+let clickCount=0;
 let valueIsO="true";
 //positon of winners
 const winPatterns=[
@@ -14,10 +17,13 @@ const winPatterns=[
     [0,4,8]
 ];
 
+endgame.hidden=true;
+
 //box manipulation
 boxes.forEach((box)=>{
     box.addEventListener("click", ()=>{
-
+        clickCount++;
+        console.log("count",clickCount);
         //if the previous box was O or the valIsO is ture
         if(valueIsO==="true"){
         
@@ -51,12 +57,27 @@ const checkWinner=()=>{
         if(pos0val!="" && pos1val!="" && pos2val!=""){
             if(pos0val===pos1val && pos1val===pos2val){
                 console.log(" Winner : ",pos0val);
-                gameStopper();
+                gameStopper(pos0val);
+                break;
             }
         }
     }
 }
 
+
+//new-game button
+newbutton.addEventListener("click",()=>{
+    boxes.forEach((box)=>{
+        
+        //setting all the values to null
+        box.textContent="";
+        //enabling the disabled button
+        box.disabled = false;
+        //setting valueIsO to true to start the game always from player X
+        valueIsO="true";
+    });
+    endgame.hidden=true;
+});
 
 //reset button
 resetbutton.addEventListener("click",()=>{
@@ -71,8 +92,10 @@ resetbutton.addEventListener("click",()=>{
     });
 });
 
-let gameStopper=()=>{
+ let gameStopper=(winner)=>{
     boxes.forEach((box)=>{
         box.disabled = true;
+        endgame.hidden=false;
     });
-}
+    showtext.textContent=`Congatulations Winner is: ${winner}`;
+ };

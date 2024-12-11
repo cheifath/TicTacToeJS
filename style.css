@@ -17,10 +17,19 @@ body {
     font-size: 30px;
 }
 
-#endgame {
+.endgame {
     text-align: center;
     font-size: 70px;
     height: 1000px;
+}
+
+#new-button {
+    border: none;
+    border-radius: 10%;
+    height: 30px;
+    width: 90px;
+    background-color: #0A369D;
+    color: #CFDEE7;
 }
 
 /** hero-section **/
